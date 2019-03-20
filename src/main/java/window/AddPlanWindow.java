@@ -134,15 +134,17 @@ public class AddPlanWindow extends JDialog {
 				int totalMin = Integer.parseInt(tfHour.getText())*60 + Integer.parseInt(tfMinute.getText());
 				int spanMin = Integer.parseInt(tfLockSpan.getText());
 				List<String> wks = new ArrayList<>();
-				if(weekCBs.get(weekCBs.size()-1).isSelected()) wks.add(weekCBs.get(weekCBs.size()-1).getText());
+				StringBuffer sb = new StringBuffer();
+				if(weekCBs.get(weekCBs.size()-1).isSelected()) sb.append(weekCBs.get(weekCBs.size()-1).getText() + ",");
 				else {
 					for(JCheckBox cb : weekCBs) {
 						if(cb.isSelected()) {
-							wks.add(cb.getText());
+							sb.append(cb.getText() + ",");
 						}
 					}
 				}
-				if(wks.isEmpty())	return;
+				if(sb.toString().equals("")) return;
+				else wks.add(sb.toString().substring(0, sb.length() - 1));
 				addBtn.fire("add", null, new Plan(totalMin, spanMin, wks));
 				JOptionPane.showMessageDialog(MainWindow.getMainWindow(), "添加计划成功");
 			}

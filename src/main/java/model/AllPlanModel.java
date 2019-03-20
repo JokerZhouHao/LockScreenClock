@@ -56,7 +56,6 @@ public class AllPlanModel implements PropertyChangeListener{
 		pcAddPlanPanel.propertyChange(evt);
 	}
 	
-	
 	public Plan getPlan(int index) {
 		return plans.get(index);
 	}

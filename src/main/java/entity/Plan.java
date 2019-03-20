@@ -71,7 +71,7 @@ public class Plan {
 	}
 	
 	public Boolean inLockTime(String curWeek, int curMin) {
-		if((this.weeks.get(0).equals("每天") || this.weeks.contains(curWeek)) &&
+		if((this.weeks.get(0).equals("每天") || this.weeks.get(0).contains(curWeek)) &&
 			this.totalMinute <= curMin &&
 			this.totalMinute + this.spanMinute >= curMin) {
 			return Boolean.TRUE;
